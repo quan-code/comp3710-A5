@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        double price = Double.parseDouble(editPrice.getText().toString());
+                        double price = Double.parseDouble(editPrice.getText().toString());// important point，will be convenient to make comparison
                         Model model = new Model();
                         model.mDate =  editDate.getText().toString();
                         model.mItem = editItem.getText().toString();
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void GetHistory(){
-        ClearTable();
+        ClearTable(); //clear it first
         Cursor result = myDb.getAllData();
         StringBuffer buffer = new StringBuffer();
         Double balance = 0.0;
@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
             tr.addView(item);
 
             history.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
-
             // get price for balance
             double price = Double.parseDouble(result.getString(3));
             balance += price;
@@ -125,10 +124,10 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.editItem.setText("");
     }
 
-    public void ClearTable(){
+    public void ClearTable(){    // clear the table 
         int count = history.getChildCount();
         for (int i = 1; i < count; i++) {
-            history.removeViewAt(1);
+            history.removeViewAt(1);  
         }
     }
 }
