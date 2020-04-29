@@ -24,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
     Button btnAdd;
     Button btnSub;
     TableLayout history;
-    DecimalFormat df = new DecimalFormat("0.00");
+    DecimalFormat df = new DecimalFormat("0.00"); // confirm the format
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myDb = new SQLiteData(this);
-
+        // assign the data
         balance = (TextView) findViewById(R.id.balance);
         editDate = (EditText) findViewById(R.id.editDate);
         editPrice = (EditText) findViewById(R.id.editPrice);
@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        double price = Double.parseDouble(editPrice.getText().toString());// important point，will be convenient to make comparison
+                        double price = Double.parseDouble(editPrice.getText().toString());// important point，will be convenient to make comparison 
+                        // in double
                         Model model = new Model();
                         model.mDate =  editDate.getText().toString();
                         model.mItem = editItem.getText().toString();
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ClearTable(){    // clear the table 
-        int count = history.getChildCount();
+        int count = history.getChildCount();// calculate the total
         for (int i = 1; i < count; i++) {
             history.removeViewAt(1);  
         }
