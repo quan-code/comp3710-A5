@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class SQLiteData extends SQLiteOpenHelper {
+    //conenect database 
     public static final String DATABASE_NAME = "A5Manager.db";
     public static final String TABLE_NAME = "A5Manager";
     public static final String COL_1 = "ID";
@@ -24,7 +25,7 @@ public class SQLiteData extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int NewVersion){
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME); // first drop, then create and insert data
         onCreate(db);
     }
 
